@@ -1,0 +1,6 @@
+Ejemplo body para un post/put de mascota
+{
+  "nombre": "Silvestre",
+  "descripcion": "Lindo Gatito",
+  "tipo": gato,
+}
