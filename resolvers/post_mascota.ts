@@ -24,7 +24,7 @@ const post_mascota = async (req: Request, res: Response) => { // async es para q
 
         }
 
-        if(tipo != ("gato" ||"perro"||"serpiente") ){
+        if(tipo != "gato"||tipo != "perro"|| tipo != "serpiente") {
             res.status(400).send("tipo not valid"); // Devuelvo un error
 
             return; // Corto la ejecucion de la funcion
