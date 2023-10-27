@@ -13,8 +13,6 @@ import { Request, Response } from "npm:express@4.18.2"; // importo los tipos de 
 import MascotaModel from "../db/mascota.ts";  // Importo el modelo de la base de datos
                                                 // PlantillaModelType es el tipo de dato que devuelve el import
 
-import { tipoMascota } from "../types.ts"; // Importo el enum de tipos
-
 const post_mascota = async (req: Request, res: Response) => { // async es para que la funcion sea asincrona
     try {
         const { nombre, descripcion, tipo } = req.body; // Obtengo los datos del body de la peticion
@@ -30,7 +28,6 @@ const post_mascota = async (req: Request, res: Response) => { // async es para q
             res.status(400).send("tipo not valid"); // Devuelvo un error
 
             return; // Corto la ejecucion de la funcion
-
         }
     
         const newMascota = new MascotaModel({ nombre, descripcion, tipo}); // Creo un nuevo X con los datos del body de la peticion
@@ -40,10 +37,10 @@ const post_mascota = async (req: Request, res: Response) => { // async es para q
         await newMascota.save(); // Guardo el nuevo X en la base de datos
     
         res.status(200).send({
-        nombre: newMascota.nombre,
-        descripcion: newMascota.descripcion,
-        tipo: newMascota.tipo,
-        id: newMascota._id.toString(),
+            nombre: newMascota.nombre,
+            descripcion: newMascota.descripcion,
+            tipo: newMascota.tipo,
+            id: newMascota._id.toString(),
         });
 
     } catch (error) {

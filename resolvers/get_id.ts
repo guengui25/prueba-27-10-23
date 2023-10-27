@@ -19,7 +19,7 @@ const get_id = async (req: Request, res: Response) => { // async es para que la 
     try {
     const { id } = req.params; // Obtengo el dni de los parametros de la peticion
 
-    const mascota = await MascotaModel.findOne({ id }).exec(); // Busco el id de X en la base de datos
+    const mascota = await MascotaModel.findById(id).exec(); // Busco el id de X en la base de datos
 
     if (!mascota) { // Si no existe X con ese id, devuelvo un error
 

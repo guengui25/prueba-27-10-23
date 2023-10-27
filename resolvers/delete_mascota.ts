@@ -18,7 +18,7 @@ const delete_mascota = async (req: Request, res: Response) => { // async es para
 
     const { id } = req.params; // Obtengo el dni de los parametros de la peticion
 
-    const mascota = await MascotaModel.findOneAndDelete({ id }).exec(); // Busco el dni de X en la base de datos
+    const mascota = await MascotaModel.findByIdAndDelete( id ).exec(); // Busco el dni de X en la base de datos
 
     if (!mascota) { // Si no existe X con ese dni, devuelvo un error
 

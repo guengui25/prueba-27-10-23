@@ -13,8 +13,6 @@ import { Request, Response } from "npm:express@4.18.2"; // importo los tipos de 
 import MascotaModel from "../db/mascota.ts";  // Importo el modelo de la base de datos
                                                 // PlantillaModelType es el tipo de dato que devuelve el import
 
-import { tipoMascota } from "../types.ts";
-
 const put_mascota = async (req: Request, res: Response) => {
 
   try {
@@ -30,16 +28,14 @@ const put_mascota = async (req: Request, res: Response) => {
 
     }
 
-    if(tipo != tipoMascota){
-        res.status(400).send("tipo not valid"); // Devuelvo un error
+    if(tipo != ("gato" ||"perro"||"serpiente") ){
+      res.status(400).send("tipo not valid"); // Devuelvo un error
 
-        return; // Corto la ejecucion de la funcion
+      return; // Corto la ejecucion de la funcion
+  }
 
-
-    }
-
-    const updatedMascota = await MascotaModel.findOneAndUpdate( // Actualizo la persona con el dni dado
-      { id }, // Busco la persona con el dni dado
+    const updatedMascota = await MascotaModel.findByIdAndUpdate( // Actualizo la persona con el dni dado
+      id , // Busco la persona con el dni dado
 
       { nombre, descripcion, tipo }, // Actualizo los datos de la persona con los datos del body de la peticion
 
