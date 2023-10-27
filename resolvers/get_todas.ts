@@ -18,7 +18,7 @@ const get_todas = async (req: Request, res: Response) => { // async es para que 
   
     try {
 
-    const mascotas = await MascotaModel.find().exec(); // Busco el dni de X en la base de datos
+    const mascotas = await MascotaModel.find().exec(); // Busco todas las mascotas
 
     if (!mascotas) {
 
@@ -27,7 +27,12 @@ const get_todas = async (req: Request, res: Response) => { // async es para que 
       return; // Corto la ejecucion de la funcion
     }
 
-    res.status(200).send(mascotas); // Devolvemos todas las mascotas
+    res.status(200).send(mascotas.map(mascota =>{ //Devolvemos todas las mascotas
+      return {nombre: mascota.nombre,
+              descripcion: mascota.descripcion,
+              tipo: mascota.tipo,
+              id: mascota._id.toString()}
+    }))
 
     } catch (error) {
 
