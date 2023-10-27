@@ -9,8 +9,8 @@ export type mascota = {
 
   // Limitar los tipos a perros, gatos y serpientes
   export enum tipoMascota {
-    perro = 0,
-    gato = 1,
-    serpiente = 2,
+    perro,
+    gato,
+    serpiente
   }
   

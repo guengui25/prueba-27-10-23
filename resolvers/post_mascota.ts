@@ -20,13 +20,13 @@ const post_mascota = async (req: Request, res: Response) => { // async es para q
         const { nombre, descripcion, tipo } = req.body; // Obtengo los datos del body de la peticion
         if (!nombre || !descripcion || !tipo) { // Si no estan todos los datos, devuelvo un error
         
-            res.status(400).send("nombre, descripcion, age y tipo are required"); // Devuelvo un error
+            res.status(400).send("nombre, descripcion y tipo are required"); // Devuelvo un error
 
             return; // Corto la ejecucion de la funcion
 
         }
 
-        if(tipo != tipoMascota){
+        if(tipo != ("gato" ||"perro"||"serpiente") ){
             res.status(400).send("tipo not valid"); // Devuelvo un error
 
             return; // Corto la ejecucion de la funcion
